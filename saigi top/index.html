@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【緊急災害情報】ポータルサイト</title>
+    <!-- 同一リポジトリ（フォルダ）内のCSSと確実に連携 -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <!-- 強化版：緊急アラートヘッダー（グラデーション仕様） -->
+    <header class="emergency-header">
+        <div class="container header-content">
+            <div class="header-badge">⚠️ 緊急インフォメーション</div>
+            <h1 class="alert-title">緊急災害情報ポータル</h1>
+            <div class="update-area">
+                <p class="update-time">最終更新: <span id="current-time">読み込み中...</span></p>
+                <button id="refresh-btn" class="refresh-button" aria-label="情報を更新する">🔄 情報を更新</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 最重要ニュース（赤枠） -->
+        <section class="critical-alert fade-in">
+            <h2>🔴 避難勧告・指示</h2>
+            <p class="alert-text">○○地区に大雨特別警報が発令されています。速やかに安全な高台や避難所へ移動してください。</p>
+        </section>
+
+        <!-- メインナビゲーション（ホバーアニメーション付きボタン） -->
+        <section class="nav-grid fade-in">
+            <a href="#evacuation" class="nav-card btn-evac">
+                <span class="icon">📍</span>
+                <span class="label">避難所一覧・マップ</span>
+            </a>
+            <a href="#lifeline" class="nav-card btn-life">
+                <span class="icon">🚰</span>
+                <span class="label">台風進路予想<br></span>
+            </a>
+            <a href="#contact" class="nav-card btn-contact">
+                <span class="icon">☩</span>
+                <span class="label">地震</span>
+            </a>
+            <a href="#traffic" class="nav-card btn-traffic">
+                <span class="icon">🎮</span>
+                <span class="label">災害シュミレーター</span>
+            </a>
+        </section>
+
+        <!-- ラジオ・ニュース配信（センター寄せ） -->
+        <section class="info-section fade-in">
+            <h2>📻 最新の災害ニュース</h2>
+            <ul class="news-list">
+                <li><span class="time">13:45</span> ○○川の警戒水位に関する情報を更新しました。</li>
+                <li><span class="time">13:10</span> 市内臨時避難所を5ヶ所開設しました。</li>
+                <li><span class="time">12:30</span> 災害対策本部を設置しました。</li>
+            </ul>
+        </section>
+
+        <!-- 軽量化・文字表示切り替え機能 -->
+        <section class="accessibility-tools fade-in">
+            <button id="toggle-contrast" class="tool-btn">白黒反転（見やすさ重視）</button>
+            <button id="text-scale" class="tool-btn">文字サイズ拡大</button>
+        </section>
+    </main>
+
+    <!-- 強化版：緊急フッター（シームレスグラデーション仕様） -->
+    <footer class="emergency-footer">
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="#terms">利用規約</a> 
+                <a href="#privacy">プライバシーポリシー</a> 
+                <a href="#contact-admin">管理者へ連絡</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 ○○市 災害対策本部</p>
+            <p class="footer-note">※このページは災害時用に通信量を抑えた軽量版です。</p>
+        </div>
+    </footer>
+
+    <!-- 同一リポジトリ（フォルダ）内のJavaScriptと確実に連携 -->
+    <script src="./script.js"></script>
+</body>
+</html>

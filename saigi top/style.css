@@ -1,0 +1,331 @@
+/* 基本設定（モバイルファースト・軽量化のためシンプルに） */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
+    line-height: 1.6;
+    color: #111;
+    background-color: #f4f4f4; /* メイン背景色 */
+    padding-bottom: 0;
+    text-align: center; /* ほとんどのテキストをセンター寄りに */
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/* 緊急ヘッダー（鮮やかな赤から深みのある赤へのグラデーション） */
+.emergency-header {
+    background: linear-gradient(135deg, #d32f2f 0%, #9a0007 100%);
+    color: #fff;
+    padding: 30px 0;
+    border-bottom: 5px solid #7f0000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-badge {
+    background-color: #fff;
+    color: #d32f2f;
+    padding: 4px 12px;
+    font-weight: bold;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.alert-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.update-time {
+    font-size: 1rem;
+    opacity: 0.95;
+}
+
+/* 最重要ニュース（赤枠） */
+.critical-alert {
+    background-color: #ffebee;
+    border: 4px solid #d32f2f;
+    border-radius: 8px;
+    padding: 25px;
+    margin: 25px 0;
+}
+
+.critical-alert h2 {
+    color: #c62828;
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+.alert-text {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* ナビゲーションボタン */
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin: 25px 0;
+}
+
+.nav-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 15px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    min-height: 130px;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-card .icon {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+/* ボタンの文字テキストの大きめサイズ（見やすさ調整） */
+.nav-card .label {
+    font-size: 1.25rem;
+    word-break: break-all;
+}
+
+/* カーソルを合わせたとき（ホバー時）のアニメーション（浮き上がる動き） */
+@media (hover: hover) {
+    .nav-card:hover {
+        transform: translateY(-5px) scale(1.03);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+
+    .nav-card:hover .icon {
+        transform: translateY(-5px) scale(1.1);
+    }
+}
+
+/* スマホ等でタップした瞬間のフィードバック */
+.nav-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ボタンの色分け（直感的な識別） */
+.btn-evac { background-color: #2e7d32; }     /* 緑：避難 */
+.btn-life { background-color: #f57c00; }     /* 橙：インフラ */
+.btn-contact { background-color: #1565c0; }  /* 青：連絡 */
+.btn-traffic { background-color: #37474f; }  /* 濃灰：交通 */
+
+/* 文字ニュースセクション（センター寄せ仕様） */
+.info-section {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 25px;
+    margin: 25px 0;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.info-section h2 {
+    font-size: 1.4rem;
+    border-bottom: 2px solid #333;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.news-list {
+    list-style: none;
+}
+
+.news-list li {
+    padding: 12px 0;
+    border-bottom: 1px dashed #ccc;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.news-list .time {
+    background-color: #666;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+/* アクセシビリティツール */
+.accessibility-tools {
+    display: flex;
+    gap: 15px;
+    margin: 35px 0;
+}
+
+.tool-btn {
+    flex: 1;
+    padding: 14px;
+    font-size: 1rem;
+    background-color: #e0e0e0;
+    border: 1px solid #999;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.tool-btn:hover {
+    background-color: #d5d5d5;
+}
+
+/* 緊急フッター（ボディ背景 #f4f4f4 からシームレスに黒へ溶け込むグラデーション） */
+.emergency-footer {
+    background: linear-gradient(180deg, #f4f4f4 0%, #e0e0e0 25%, #424242 60%, #1a1a1a 100%);
+    padding: 60px 0 40px 0; 
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-links a {
+    color: #cfd8dc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer-copyright {
+    color: #fff;
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+.footer-note {
+    color: #ff8a80; 
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+/* スクロールアニメーション用の設定（下から浮き上がる） */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 手動更新ボタンのデザイン */
+.update-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.refresh-button {
+    background-color: #fff;
+    color: #d32f2f;
+    border: 2px solid #b71c1c;
+    padding: 6px 16px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+@media (hover: hover) {
+    .refresh-button:hover {
+        background-color: #ffebee;
+        transform: scale(1.03);
+    }
+}
+
+.refresh-button:active {
+    transform: scale(0.98);
+}
+
+body.high-contrast .refresh-button {
+    background-color: #000 !important;
+    color: #fff !important;
+    border: 2px solid #fff !important;
+}
+
+/* 高コントラストモード */
+body.high-contrast {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+body.high-contrast .info-section,
+body.high-contrast .critical-alert {
+    background-color: #000 !important;
+    border: 3px solid #fff !important;
+    color: #fff !important;
+}
+body.high-contrast .nav-card {
+    background-color: #222 !important;
+    border: 2px solid #fff !important;
+}
+body.high-contrast h2,
+body.high-contrast .critical-alert h2,
+body.high-contrast .info-section h2 {
+    color: #fff !important;
+    border-bottom-color: #fff !important;
+}
+body.high-contrast .emergency-header,
+body.high-contrast .emergency-footer {
+    background: #000 !important;
+    border-top: 3px solid #fff !important;
+}
+
+/* 文字拡大モード */
+body.large-text {
+    font-size: 1.3rem;
+}
+body.large-text .alert-title { font-size: 2.4rem; }
+body.large-text .critical-alert h2 { font-size: 1.9rem; }
+body.large-text .alert-text { font-size: 1.6rem; }
+body.large-text .nav-card .label { font-size: 1.3rem; }
