@@ -6,43 +6,64 @@
     <title>【緊急災害情報】ポータルサイト</title>
     <!-- 同一リポジトリ（フォルダ）内のCSSと確実に連携 -->
     <link rel="stylesheet" href="./style.css">
+    <style>
+        .emergency-header.normal-state{
+            background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+            border-bottom: 5px solid #0a2472;
+        }
+.emergency-header.normal-state.header .header-badge{
+    color: #1565c0;
+}
+.critical-alert.nomal-state{
+    background-color: #e8f5e9;
+    border:3px solid #2e7d32;
+}
+.critical-alert.nomal-state h2{
+    color: #1b5e20;
+}
+</style>
 </head>
 <body>
-
-    <!-- 強化版：緊急アラートヘッダー（グラデーション仕様） -->
-    <header class="emergency-header">
+    <!-- 通常バージョン-->
+    <header class="emergency-header nomal-state">
         <div class="container header-content">
-            <div class="header-badge">⚠️ 緊急インフォメーション</div>
-            <h1 class="alert-title">緊急災害情報ポータル</h1>
-            <div class="update-area">
-                <p class="update-time">最終更新: <span id="current-time">読み込み中...</span></p>
-                <button id="refresh-btn" class="refresh-button" aria-label="情報を更新する">🔄 情報を更新</button>
-            </div>
-        </div>
-    </header>
+            <span class="header-badge">防災案内</span>
+<h1 class="alert-title">防災情報ポータル</h1>
+<p class="update-time">最終更新：2026年10/1 18:00</p>
 
+<div class="update-area">
+    <button type="button" class="refresh-button" onclick="location.reload()">最新情報に更新</button>
+</div>
+</div>
+</header>
+
+
+ 
     <main class="container">
-        <!-- 最重要ニュース（赤枠） -->
-        <section class="critical-alert fade-in">
-            <h2>🔴 避難勧告・指示</h2>
-            <p class="alert-text">○○地区に大雨特別警報が発令されています。速やかに安全な高台や避難所へ移動してください。</p>
+        <!-- 最重要ニュースnomalver（赤枠） -->
+        <section class="critical-alert" class="critical-alert nomal-state">
+            <h2 id="alert-heading">現在の避難情報</h2>
+            <p id="alert-text">現在発令されている警報及び避難指示はありません。</p>
+        <p id="alert-subtext" style="margin-top: 6px; font-size: 0.9rem; color: #330;">
+            今後の気象情報にご注意ください
+            </p>
         </section>
 
         <!-- メインナビゲーション（ホバーアニメーション付きボタン） -->
         <section class="nav-grid fade-in">
-            <a href="#evacuation" class="nav-card btn-evac">
+            <a href="#evacuation.html" class="nav-card btn-evac" style="--bg-img: url('images/evac: .jpg;');">
                 <span class="icon">📍</span>
                 <span class="label">避難所一覧・マップ</span>
             </a>
-            <a href="#lifeline" class="nav-card btn-life">
-                <span class="icon">🚰</span>
+            <a href="#lifeline.html" class="nav-card btn-life" style="--bg-img: url('images/lifeline: .jpg;');">
+                <span class="icon">🌀</span>
                 <span class="label">台風進路予想<br></span>
             </a>
-            <a href="#contact" class="nav-card btn-contact">
-                <span class="icon">☩</span>
+            <a href="#contact.html" class="nav-card btn-contact" style="--bg-img: url('https://www.silhouette-illust.com/wp-content/uploads/2017/05/building_earthquake_29882-600x600.jpg;')">
+                <span class="icon">🏚️</span>
                 <span class="label">地震</span>
             </a>
-            <a href="#traffic" class="nav-card btn-traffic">
+            <a href="#traffic.html" class="nav-card btn-traffic" style="--bg-img: url('images/traffic: .jpg;')">
                 <span class="icon">🎮</span>
                 <span class="label">災害シュミレーター</span>
             </a>
@@ -52,9 +73,9 @@
         <section class="info-section fade-in">
             <h2>📻 最新の災害ニュース</h2>
             <ul class="news-list">
-                <li><span class="time">13:45</span> ○○川の警戒水位に関する情報を更新しました。</li>
-                <li><span class="time">13:10</span> 市内臨時避難所を5ヶ所開設しました。</li>
-                <li><span class="time">12:30</span> 災害対策本部を設置しました。</li>
+                <li><span class="time">13:45</span> 本日の気象注意報はありません</li>
+                <li><span class="time">13:10</span> 防災備蓄リストの更新をしました</li>
+                <li><span class="time">12:30</span> 明日から急激に気温の上昇になる懸念あり</li>
             </ul>
         </section>
 
