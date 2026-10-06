@@ -28,9 +28,9 @@
     <header class="emergency-header nomal-state">
         <div class="container header-content">
             <span class="header-badge">防災案内</span>
-<h1 class="alert-title">防災情報ポータル</h1>
-<p class="update-time">最終更新：2026年10/1 18:00</p>
 
+<h1 class="alert-title">防災情報ポータル</h1>
+<p id="update-time" class="update-time">最終更新：2026年10月6日 18:00</p>
 <div class="update-area">
     <button type="button" class="refresh-button" onclick="location.reload()">最新情報に更新</button>
 </div>
@@ -73,9 +73,11 @@
         <section class="info-section fade-in">
             <h2>📻 最新の災害ニュース</h2>
             <ul class="news-list">
-                <li><span class="time">13:45</span> 本日の気象注意報はありません</li>
-                <li><span class="time">13:10</span> 防災備蓄リストの更新をしました</li>
-                <li><span class="time">12:30</span> 明日から急激に気温の上昇になる懸念あり</li>
+                <li><span class="time">10/13</span> 本日の気象注意報はありません</li>
+                <li><span class="time">10/13</span> 防災備蓄リストの更新をしました</li>
+                <li><span class="time">10/13</span> 明日から急激に気温の上昇になる懸念あり</li>
+                 <li><span class="time">10/12</span> 駅前防災施設が竣工しました。</li>
+                 <li><span class="time">10/05</span> 防災訓練手順のリメイクを公開しました</li>
             </ul>
         </section>
 
@@ -94,7 +96,7 @@
                 <a href="#privacy">プライバシーポリシー</a> 
                 <a href="#contact-admin">管理者へ連絡</a>
             </div>
-            <p class="footer-copyright">&copy; 2026 ○○市 災害対策本部</p>
+            <p class="footer-copyright">&copy; 2026 奈良市 災害対策本部</p>
             <p class="footer-note">※このページは災害時用に通信量を抑えた軽量版です。</p>
         </div>
     </footer>
@@ -102,4 +104,19 @@
     <!-- 同一リポジトリ（フォルダ）内のJavaScriptと確実に連携 -->
     <script src="./script.js"></script>
 </body>
+<script>
+  function updateToCurrentDate() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const date = now.getDate();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+
+    document.getElementById('update-time').textContent = `最終更新：${year}年${month}/${date} ${hours}:${minutes}`;
+  }
+
+  // ★ ページ読み込み完了時にも自動で今日の日時に設定
+  window.addEventListener('DOMContentLoaded', updateToCurrentDate);
+</script>
 </html>

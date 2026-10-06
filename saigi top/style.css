@@ -21,11 +21,12 @@ body {
     padding: 15px;
 }
 
-/* 緊急ヘッダー（鮮やかな赤から深みのある赤へのグラデーション） */
+/* 緊急ヘッダー（鮮やかな赤からシームレスへ溶け込むグラデーション） */
 .emergency-header {
     background: linear-gradient(135deg, #d32f2f 0%, #9a0007 100%);
     color: #fff;
-    padding: 30px 0;
+    padding: 60px 0 40px 0;
+
     border-bottom: 5px solid #7f0000;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
@@ -43,12 +44,12 @@ body {
     padding: 4px 12px;
     font-weight: bold;
     border-radius: 20px;
-    font-size: 0.85rem;
+    font-size: 1.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .alert-title {
-    font-size: 2rem;
+    font-size: 3.4rem;
     font-weight: bold;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -109,7 +110,7 @@ body {
 }
 
 .nav-card .icon {
-    font-size: 2.2rem;
+    font-size: 3.3rem;
     margin-bottom: 8px;
     transition: transform 0.3s ease;
     display: inline-block;
@@ -187,6 +188,10 @@ body {
 
 .news-list {
     list-style: none;
+    max-height: 200px;
+    overflow-y:auto;
+    scrollbar-width: thin;                  /* 細いスクロールバー */
+    scrollbar-color: #ccc transparent;
 }
 
 .news-list li {
