@@ -105,6 +105,7 @@
     <script src="./script.js"></script>
 </body>
 <script>
+  // 1. 日時を更新するメイン関数
   function updateToCurrentDate() {
     const now = new Date();
     const year = now.getFullYear();
@@ -112,58 +113,41 @@
     const date = now.getDate();
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
-    const target = document.getElementByid('update-time');
-    if(target){
-    target.textContent = `最終更新：${year}年${month}/${date} ${hours}:${minutes}`;
-  }
-//外部リンクに応じた書き換え処理の実行
-  checkWeatherData();
-  }
-  // ★ 外部データのチェックで画面の書き換えを行う
-function checkWeatherData(){
-    
-const weatherData = {
-      isWarning: true, 
-      title: '【警戒レベル3】大雨注意報・洪水注意報が発令されました',
-      newsItem: '【気象情報】大雨注意報が発表されました。今後の情報に注意してください。'
-    };
-    
-const header = document.querySelector('.emergency-header');
-const newsList = document.getElementByid('news-list');
 
-if(weatherData.isWaning){
-    if(header){
-        header.classList.add('is-alert');
+    // IDが 'update-time' の要素を書き換え
+    const target = document.getElementById('update-time');
+    if (target) {
+      target.textContent = `最終更新：${year}年${month}/${date} ${hours}:${minutes}`;
     }
-//ニュースリストの先頭に発令中の警報を自動追加
-if (newsList && !document.getElementById('latest-alert-news')){
-const newLi = document.createElemnt('li');
-newLi.id = 'latest-alert-news';
-newLi.style.fontWeight = 'bold';
-newLi.style.color = '#e60000'
 
- const now = new Date();
- const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+    // 画面切り替え処理を実行
+    checkWeatherData();
+  }
 
- newsLi.innerHTML = '<span class="time">${timeStr}</span><span${weatherData.newsItem}></span>';
-    newList.innertBeforee(newLi, newsList.firstChild);
-}
-}else{
-    //警報発令なしの時
-    if (header) {
-      header.classList.remove('is-alert');
+  // 2. 状態に応じた画面切り替え関数（変数名を emergencyHeader に変更）
+  function checkWeatherData() {
+    const isWarning = true; // テスト用フラグ
+
+    // 変数名を重複しない名称に変更
+    const emergencyHeader = document.querySelector('.emergency-header');
+    
+    if (emergencyHeader) {
+      if (isWarning) {
+        emergencyHeader.classList.add('is-alert');
+      } else {
+        emergencyHeader.classList.remove('is-alert');
+      }
     }
   }
-}
 
-  window.addEventListener('DOMContentLoaded', () =>{
+  // 3. 初期実行 ＆ タイマー設定
+  window.addEventListener('DOMContentLoaded', () => {
     updateToCurrentDate();
 
-
-
-    //五分おきに自動チェック
+    // 5分（300,000ミリ秒）ごとに自動実行
     const CHECK_INTERVAL = 5 * 60 * 1000;
     setInterval(updateToCurrentDate, CHECK_INTERVAL);
   });
 </script>
+
 </html>
