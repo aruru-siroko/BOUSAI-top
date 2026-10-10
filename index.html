@@ -76,7 +76,7 @@
                 <li><span class="time">10/13</span> 本日の気象注意報はありません</li>
                 <li><span class="time">10/13</span> 防災備蓄リストの更新をしました</li>
                 <li><span class="time">10/13</span> 明日から急激に気温の上昇になる懸念あり</li>
-                 <li><span class="time">10/12</span> 駅前防災施設が竣工しました。</li>
+                 <li><span class="time">10/12</span> 南海トラフに関する情報が更新されました。</li>
                  <li><span class="time">10/05</span> 防災訓練手順のリメイクを公開しました</li>
             </ul>
         </section>
@@ -112,11 +112,58 @@
     const date = now.getDate();
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
-
-    document.getElementById('update-time').textContent = `最終更新：${year}年${month}/${date} ${hours}:${minutes}`;
+    const target = document.getElementByid('update-time');
+    if(target){
+    target.textContent = `最終更新：${year}年${month}/${date} ${hours}:${minutes}`;
   }
+//外部リンクに応じた書き換え処理の実行
+  checkWeatherData();
+  }
+  // ★ 外部データのチェックで画面の書き換えを行う
+function checkWeatherData(){
+    
+const weatherData = {
+      isWarning: true, 
+      title: '【警戒レベル3】大雨注意報・洪水注意報が発令されました',
+      newsItem: '【気象情報】大雨注意報が発表されました。今後の情報に注意してください。'
+    };
+    
+const header = document.querySelector('.emergency-header');
+const newsList = document.getElementByid('news-list');
 
-  // ★ ページ読み込み完了時にも自動で今日の日時に設定
-  window.addEventListener('DOMContentLoaded', updateToCurrentDate);
+if(weatherData.isWaning){
+    if(header){
+        header.classList.add('is-alert');
+    }
+//ニュースリストの先頭に発令中の警報を自動追加
+if (newsList && !document.getElementById('latest-alert-news')){
+const newLi = document.createElemnt('li');
+newLi.id = 'latest-alert-news';
+newLi.style.fontWeight = 'bold';
+newLi.style.color = '#e60000'
+
+ const now = new Date();
+ const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+
+ newsLi.innerHTML = '<span class="time">${timeStr}</span><span${weatherData.newsItem}></span>';
+    newList.innertBeforee(newLi, newsList.firstChild);
+}
+}else{
+    //警報発令なしの時
+    if (header) {
+      header.classList.remove('is-alert');
+    }
+  }
+}
+
+  window.addEventListener('DOMContentLoaded', () =>{
+    updateToCurrentDate();
+
+
+
+    //五分おきに自動チェック
+    const CHECK_INTERVAL = 5 * 60 * 1000;
+    setInterval(updateToCurrentDate, CHECK_INTERVAL);
+  });
 </script>
 </html>
