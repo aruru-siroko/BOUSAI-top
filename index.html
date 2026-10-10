@@ -59,25 +59,29 @@
                 <span class="icon">🌀</span>
                 <span class="label">台風進路予想<br></span>
             </a>
-            <a href="#contact.html" class="nav-card btn-contact" style="--bg-img: url('https://www.silhouette-illust.com/wp-content/uploads/2017/05/building_earthquake_29882-600x600.jpg;')">
+            <a href="#contact.html" class="nav-card btn-contact" style="--bg-img: url('images/contact: jpg;')">
                 <span class="icon">🏚️</span>
                 <span class="label">地震</span>
             </a>
             <a href="#traffic.html" class="nav-card btn-traffic" style="--bg-img: url('images/traffic: .jpg;')">
-                <span class="icon">🎮</span>
-                <span class="label">災害シュミレーター</span>
+                <span class="icon">⛑</span>
+                <span class="label">防災</span>
             </a>
+            <a href="traffic.html" class="nav-card btn-traffic" style="--bg-img: url('images/traffic:.jpg;')">
+                <span class="icon">☂</span>
+                <span class="label">大雨・洪水情報</span>
+                </a>
         </section>
 
         <!-- ラジオ・ニュース配信（センター寄せ） -->
         <section class="info-section fade-in">
             <h2>📻 最新の災害ニュース</h2>
             <ul class="news-list">
-                <li><span class="time">10/13</span> 本日の気象注意報はありません</li>
-                <li><span class="time">10/13</span> 防災備蓄リストの更新をしました</li>
-                <li><span class="time">10/13</span> 明日から急激に気温の上昇になる懸念あり</li>
-                 <li><span class="time">10/12</span> 南海トラフに関する情報が更新されました。</li>
-                 <li><span class="time">10/05</span> 防災訓練手順のリメイクを公開しました</li>
+                <li><span class="time">10/10</span> 大雨洪水情報リンクと防災リンクを追加しました。</li>
+                <li><span class="time">10/02</span> 防災備蓄リストの更新をしました</li>
+                <li><span class="time">10/02</span> 明日から急激に気温の上昇になる懸念あり</li>
+                 <li><span class="time">10/01</span> 南海トラフに関する情報が更新されました。</li>
+                 <li><span class="time">09/25</span> 防災訓練手順のリメイクを公開しました</li>
             </ul>
         </section>
 
@@ -126,7 +130,7 @@
 
   // 2. 状態に応じた画面切り替え関数（変数名を emergencyHeader に変更）
   function checkWeatherData() {
-    const isWarning = true; // テスト用フラグ
+    const isWarning = false; // テスト用フラグ
 
     // 変数名を重複しない名称に変更
     const emergencyHeader = document.querySelector('.emergency-header');
