@@ -84,3 +84,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fadeElements.forEach(el => observer.observe(el));
 });
+
+// JR・主要私鉄の路線データ定義
+const railwayData = {
+  jr線: [
+    { name: 'JR東日本 山手線', status: '平常運転', state: 'normal' },
+    { name: 'JR東日本 湘南新宿ライン', status: '平常運転', state: 'normal' },
+    { name: 'JR東日本 中央線快速', status: '平常運転', state: 'normal' },
+    { name: 'JR東日本 京浜東北線', status: '平常運転', state: 'normal' },
+    { name: 'JR東日本 東海道本線', status: '遅延あり', state: 'delay' },
+    { name: 'JR東日本 横浜線', status: '平常運転', state: 'normal' },
+    { name: 'JR東日本 横須賀線', status: '平常運転', state: 'normal' },
+    { name: 'JR東日本 京浜東北根岸線', status: '平常運転', state: 'normal' },
+    { name: 'JR東日本 相模線', status: '平常運転', state: 'normal' },
+    { name: 'JR東日本 青梅線', status: '平常運転', state: 'normal' },
+    { name: 'JR東日本 五日市線', status: '平常運転', state: 'normal' },
+    { name: 'JR東日本 鶴見線', status: '平常運転', state: 'normal' },
+    { name: 'JR西日本 環状線', status: '平常運転', state: 'normal' }
+  ],
+  kantoPrivate: [
+    { name: '東急東横線', status: '平常運転', state: 'normal' },
+    { name: '小田急小田原線', status: '平常運転', state: 'normal' },
+    { name: '東京メトロ丸ノ内線', status: '平常運転', state: 'normal' },
+    { name: '京王線', status: '見合わせ', state: 'suspend' }
+  ],
+  kansaiPrivate: [
+    { name: '阪急神戸本線', status: '平常運転', state: 'normal' },
+    { name: '阪神本線', status: '平常運転', state: 'normal' },
+    { name: '近鉄奈良線', status: '平常運転', state: 'normal' },
+    { name: '南海本線', status: '平常運転', state: 'normal' }
+  ]
+};
+
+// リストを描画する関数
+function renderRailwayList(containerId, items) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  container.innerHTML = '';
+  items.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'railway-item';
+    
+    // バッジ用クラス決定
+    let badgeClass = 'badge-normal';
+    if (item.state === 'delay') badgeClass = 'badge-delay';
+    if (item.state === 'suspend') badgeClass = 'badge-suspend';
+
+    row.innerHTML = `
+      <span class="line-name">${item.name}</span>
+      <span class="badge-status ${badgeClass}">${item.status}</span>
+    `;
+    container.appendChild(row);
+  });
+}
+
+// 全路線を一括描画・更新するメイン処理
+function updateAllRailwayStatus() {
+  renderRailwayList('jr-lines', railwayData.jr);
+  renderRailwayList('kanto-private', railwayData.kantoPrivate);
+  renderRailwayList('kansai-private', railwayData.kansaiPrivate);
+}
+
+// 初期実行とイベント設定
+document.addEventListener('DOMContentLoaded', () => {
+  updateAllRailwayStatus();
+
+  // 手動更新ボタンイベント
+  const refreshBtn = document.getElementById('refresh-train-btn');
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', () => {
+      updateAllRailwayStatus();
+    });
+  }
+});

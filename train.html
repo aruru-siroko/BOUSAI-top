@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鉄道運行状況 - 防災情報ポータル</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* 鉄道運行状況ページ専用の追加CSS */
+    .train-page-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 8px 16px;
+      background-color: #4b5563;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    .back-btn:hover {
+      background-color: #374151;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="train-page-container">
+    <!-- トップに戻るボタン -->
+    <a href="index.html" class="back-btn">← ポータル参照画面に戻る</a>
+
+    <!-- 鉄道運行情報エリア -->
+    <section class="railway-section">
+      <div class="railway-header">
+        <h2>🚆 全国主要鉄道 運行状況</h2>
+        <button type="button" id="refresh-train-btn" class="btn-refresh">最新情報に更新</button>
+      </div>
+
+      <!-- エリア・会社別グループ -->
+      <div class="railway-grid">
+        <div class="railway-card">
+          <h3>JR主要線</h3>
+          <div class="railway-list" id="jr-lines"></div>
+        </div>
+
+        <div class="railway-card">
+          <h3>関東私鉄</h3>
+          <div class="railway-list" id="kanto-private"></div>
+        </div>
+
+        <div class="railway-card">
+          <h3>関西私鉄</h3>
+          <div class="railway-list" id="kansai-private"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
