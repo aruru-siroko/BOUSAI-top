@@ -25,6 +25,45 @@
     .back-btn:hover {
       background-color: #374151;
     }
+
+/* 外部リンク用カードボタン */
+    .company-link-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 16px;
+      background-color: #ffffff;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #1f2937;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    }
+
+    .company-link-card:hover
+    {
+      border-color:#2563eb ;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(34,98,235,0.14) ;
+    }
+
+
+    .company-name
+    {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .link-caption
+    {
+      font-size: 0.95rem;
+      color: #2563eb;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
   </style>
 </head>
 <body>
@@ -33,30 +72,87 @@
     <!-- トップに戻るボタン -->
     <a href="index.html" class="back-btn">← ポータル参照画面に戻る</a>
 
-    <!-- 鉄道運行情報エリア -->
-    <section class="railway-section">
-      <div class="railway-header">
-        <h2>🚆 全国主要鉄道 運行状況</h2>
-        <button type="button" id="refresh-train-btn" class="btn-refresh">最新情報に更新</button>
+ <!-- ① 地域カテゴリー切替タブ -->
+      <div class="company-tabs">
+        <button type="button" class="tab-btn active" data-target="kansai">関西私鉄</button>
+        <button type="button" class="tab-btn" data-target="jr">JR・新幹線</button>
+        <button type="button" class="tab-btn" data-target="kanto">関東私鉄・地下鉄</button>
       </div>
 
-      <!-- エリア・会社別グループ -->
-      <div class="railway-grid">
-        <div class="railway-card">
-          <h3>JR主要線</h3>
-          <div class="railway-list" id="jr-lines"></div>
-        </div>
+      <!-- ② 各地域ごとの公式リンクボタン一覧 -->
 
-        <div class="railway-card">
-          <h3>関東私鉄</h3>
-          <div class="railway-list" id="kanto-private"></div>
-        </div>
-
-        <div class="railway-card">
-          <h3>関西私鉄</h3>
-          <div class="railway-list" id="kansai-private"></div>
+      <!-- 【関西私鉄】 -->
+      <div id="group-kansai" class="railway-group active">
+        <div class="company-link-grid">
+          <a href="https://www.kintetsu.jp/unkou/unkou.html" target="_blank" rel="noopener noreferrer" class="company-link-card">
+            <span class="company-name">近畿日本鉄道（近鉄）</span>
+            <span class="link-caption">公式サイトで確認 ↗</span>
+          </a>
+          <a href="https://www.hanshin.co.jp/" target="_blank" rel="noopener noreferrer" class="company-link-card">
+            <span class="company-name">阪神電気鉄道</span>
+            <span class="link-caption">公式サイトで確認 ↗</span>
+          </a>
+          <a href="https://www.hankyu.co.jp/railinfo/" target="_blank" rel="noopener noreferrer" class="company-link-card">
+            <span class="company-name">阪急電鉄</span>
+            <span class="link-caption">公式サイトで確認 ↗</span>
+          </a>
+          <a href="https://www.nankai.co.jp/railinfo/" target="_blank" rel="noopener noreferrer" class="company-link-card">
+            <span class="company-name">南海電気鉄道</span>
+            <span class="link-caption">公式サイトで確認 ↗</span>
+          </a>
+          <a href="https://subway.osakametro.co.jp/subway_status.subway_status" target="_blank" rel="noopener noreferrer" class="company-link-card">
+            <span class="company-name">Osaka Metro</span>
+            <span class="link-caption">公式サイトで確認 ↗</span>
+          </a>
+          <a href="https://www.keihan.co.jp/traffic/traintraffic/" target="_blank" rel="noopener noreferrer" class="company-link-card">
+            <span class="company-name">京阪電気鉄道</span>
+            <span class="link-caption">公式サイトで確認 ↗</span>
+          </a>
         </div>
       </div>
+
+      <!-- 【JR・新幹線】 -->
+      <div id="group-jr" class="railway-group">
+        <div class="company-link-grid">
+          <a href="https://trafficinfo.westjr.co.jp/kinki.html" target="_blank" rel="noopener noreferrer" class="company-link-card">
+            <span class="company-name">JR西日本（近畿エリア）</span>
+            <span class="link-caption">公式サイトで確認 ↗</span>
+          </a>
+          <a href="https://traininfo.jreast.co.jp/train_info/kanto.aspx" target="_blank" rel="noopener noreferrer" class="company-link-card">
+            <span class="company-name">JR東日本（関東エリア）</span>
+            <span class="link-caption">公式サイトで確認 ↗</span>
+          </a>
+          <a href="https://traininfo.jr-central.co.jp/shinkansen/pc/ja/index.html" target="_blank" rel="noopener noreferrer" class="company-link-card">
+            <span class="company-name">東海道・山陽新幹線</span>
+            <span class="link-caption">公式サイトで確認 ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 【関東私鉄・地下鉄】 -->
+      <div id="group-kanto" class="railway-group">
+        <div class="company-link-grid">
+          <a href="https://www.tokyu.co.jp/unko/" target="_blank" rel="noopener noreferrer" class="company-link-card">
+            <span class="company-name">東急電鉄</span>
+            <span class="link-caption">公式サイトで確認 ↗</span>
+          </a>
+          <a href="https://www.odakyu.jp/cgi-bin/user/emg/unko.cgi" target="_blank" rel="noopener noreferrer" class="company-link-card">
+            <span class="company-name">小田急電鉄</span>
+            <span class="link-caption">公式サイトで確認 ↗</span>
+          </a>
+          <a href="https://www.keio.co.jp/unkou/" target="_blank" rel="noopener noreferrer" class="company-link-card">
+            <span class="company-name">京王電鉄</span>
+            <span class="link-caption">公式サイトで確認 ↗</span>
+          </a>
+          <a href="https://www.tokyometro.jp/unkou/index.html" target="_blank" rel="noopener noreferrer" class="company-link-card">
+            <span class="company-name">東京メトロ</span>
+            <span class="link-caption">公式サイトで確認 ↗</span>
+          </a>
+        </div>
+      </div>
+
+    </section>
+  </div>
     </section>
   </div>
 
